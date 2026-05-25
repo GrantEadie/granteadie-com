@@ -24,7 +24,7 @@ export default function Home() {
                   as="h3"
                   className="font-[family-name:var(--font-loram)] text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold [-webkit-text-stroke:1px_#2A09F3] dark:[-webkit-text-stroke:1px_#FFFFFF] [-webkit-text-fill-color:transparent] tracking-wide"
                 >
-                  Web Dev | Designer | Etc
+                  Designer · Developer · Etc
                 </AnimatedHeading>
               </div>
 
@@ -32,11 +32,12 @@ export default function Home() {
 
               <div className="max-w-2xl">
                 <p className="font-[family-name:var(--font-dm-sans)] text-lg sm:text-xl md:text-2xl text-[#2A09F3]/90 dark:text-[#FFFFFF]/90 leading-relaxed">
-                  Hi, I'm Grant, a developer and designer pulled toward work
-                  that weaves technology into the fabric of community. I build
-                  tools that help organizations articulate their purpose, and
-                  I'm guided by a conviction that we can cultivate a deeper
-                  harmony between human life and the living world we inhabit.
+                  Hi, I&apos;m Grant, a developer and designer pulled toward
+                  work that weaves technology into the fabric of community. I
+                  build tools that help organizations articulate their purpose,
+                  and I&apos;m guided by a conviction that we can cultivate a
+                  deeper harmony between human life and the living world we
+                  inhabit.
                 </p>
                 <a
                   href="/portfolio"
@@ -65,7 +66,7 @@ export default function Home() {
       </section>
 
       {/* Timeline Section */}
-      <section className="min-h-screen px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#F0F0F0] dark:bg-[#2007CF]">
+      <section className="min-h-screen px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#f7f7f7] dark:bg-[#2007CF]">
         <div className="max-w-5xl mx-auto">
           <FadeInSection>
             <AnimatedHeading
@@ -81,7 +82,7 @@ export default function Home() {
             <FadeInSection delay={300}>
               <div className="relative pl-6 sm:pl-8 border-l-2 border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
                 <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2A09F3] dark:bg-[#FFFFFF]"></div>
-                <div className="bg-white/60 dark:bg-white/10 backdrop-blur-md border border-white/70 dark:border-white/20 shadow-lg rounded-lg py-4 px-4 sm:px-5">
+                <div className="bg-white/60 dark:bg-white/10 backdrop-blur-xs border border-white/70 dark:border-white/20 shadow-sm rounded-lg py-4 px-4 sm:px-5">
                   <div className="mb-1 sm:mb-2 flex items-center gap-2">
                     <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold text-[#2A09F3]/70 dark:text-[#FFFFFF]/70">
                       2019 - Present
@@ -94,13 +95,16 @@ export default function Home() {
                     as="h3"
                     className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-1 sm:mb-2 leading-tight"
                   >
-                    Freelance Web Developer
+                    Rare Dimension
                   </AnimatedHeading>
+                  <p className="font-[family-name:var(--font-dm-sans)] italic text-sm sm:text-base text-[#2A09F3]/80 dark:text-[#FFFFFF]/80 mb-3">
+                    Co-founder, Designer &amp; Developer
+                  </p>
                   <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] leading-relaxed list-disc space-y-1.5 marker:text-[8px] marker:text-[#2A09F3]/50 dark:marker:text-[#FFFFFF]/50">
                     <li>
                       Develop production-ready sites using WordPress, Drupal,
                       React, Astro, and Next.js, selecting the right tool for
-                      each client's content needs, technical capacity, and
+                      each client&apos;s content needs, technical capacity, and
                       budget
                     </li>
                     <li>
@@ -164,32 +168,27 @@ export default function Home() {
                   as="h3"
                   className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-1 sm:mb-2 leading-tight"
                 >
-                  TwispWorks Foundation 501(c)(3)
+                  Workona
                 </AnimatedHeading>
                 <p className="font-[family-name:var(--font-dm-sans)] italic text-sm sm:text-base text-[#2A09F3]/80 dark:text-[#FFFFFF]/80 mb-3">
-                  Development/Design/Communications
+                  Software Engineer
                 </p>
                 <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] leading-relaxed list-disc space-y-1.5 marker:text-[8px] marker:text-[#2A09F3]/50 dark:marker:text-[#FFFFFF]/50">
                   <li>
-                    Rebuilt organization's website using WordPress and custom
-                    development for a 6.4-acre campus housing 35+ businesses.
+                    Engineered and helped market a Chrome extension that scaled
+                    to 500,000+ users.
                   </li>
                   <li>
-                    Designed and developed an interactive campus map with
-                    real-time navigation functionality.
+                    Shipped product features, ran growth experiments, and managed
+                    backlog alongside the core team.
                   </li>
                   <li>
-                    Create visual assets and manage content strategy across
-                    fundraising campaigns, web, and social platforms.
-                  </li>
-                  <li>
-                    Lead promotional initiatives and manage audience and donor
-                    engagement through email, direct mail, website, and various
-                    outreach tools and initiatives.
+                    Direct visibility into the dev-tool product world; saw
+                    close-up what moves a real growth-stage product.
                   </li>
                 </ul>
                 <a
-                  href="https://twispworks.org/"
+                  href="https://workona.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-[family-name:var(--font-dm-sans)] inline-flex items-center gap-1.5 mt-3 text-sm sm:text-base font-semibold text-[#2A09F3] dark:text-[#FFFFFF] underline underline-offset-4 decoration-1 hover:underline-offset-8 hover:decoration-2 transition-all duration-300 group"
@@ -386,7 +385,7 @@ export default function Home() {
                   <li>
                     Copy Editing{" "}
                     <i className="text-xs italic">
-                      (if it's something I care about)
+                      (if it&apos;s something I care about)
                     </i>
                   </li>
                 </ul>
@@ -413,7 +412,7 @@ export default function Home() {
       </section>
 
       {/* Education Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#F0F0F0] dark:bg-[#2007CF]">
+      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#f7f7f7] dark:bg-[#2007CF]">
         <FadeInSection>
           <div className="max-w-5xl mx-auto flex items-center justify-center gap-4">
             <svg
@@ -444,26 +443,28 @@ export default function Home() {
       {/* Contact Section */}
       <section className="min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#FFFFFF] dark:bg-[#2A09F3]">
         <FadeInSection>
-          <div className="max-w-5xl w-full text-center">
+          <div className="max-w-5xl w-full flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
             <Image
               src="/grant-headshot.jpg"
               alt="Grant Eadie"
-              width={96}
-              height={96}
-              className="rounded-full object-cover w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-5 sm:mb-6"
+              width={160}
+              height={160}
+              className="rounded-full object-cover w-32 h-32 sm:w-40 sm:h-40 shrink-0"
             />
-            <AnimatedHeading
-              as="h2"
-              className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-4 sm:mb-6"
-            >
-              Get In Touch
-            </AnimatedHeading>
-            <a
-              href="mailto:grantleadie@gmail.com"
-              className="font-[family-name:var(--font-dm-sans)] inline-block text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#2A09F3] dark:text-[#FFFFFF] hover:text-[#2A09F3]/70 dark:hover:text-[#FFFFFF]/70 transition-colors underline decoration-2 underline-offset-4 break-all sm:break-normal px-2"
-            >
-              grantleadie@gmail.com
-            </a>
+            <div>
+              <AnimatedHeading
+                as="h2"
+                className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-4 sm:mb-6"
+              >
+                Get In Touch
+              </AnimatedHeading>
+              <a
+                href="mailto:me@granteadie.com"
+                className="font-[family-name:var(--font-dm-sans)] inline-block text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#2A09F3] dark:text-[#FFFFFF] hover:text-[#2A09F3]/70 dark:hover:text-[#FFFFFF]/70 transition-colors underline decoration-2 underline-offset-4 break-all sm:break-normal"
+              >
+                me@granteadie.com
+              </a>
+            </div>
           </div>
         </FadeInSection>
       </section>

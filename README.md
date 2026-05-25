@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grant Eadie Resume Site
 
-## Getting Started
+The portfolio site at `granteadie.com`, plus a system for shipping tailored resumes and cover letters per job application.
 
-First, run the development server:
+## Run it
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  page.tsx                          ← main portfolio (granteadie.com)
+  portfolio/page.tsx                ← PDF portfolio viewer
+  resumes/
+    page.tsx                        ← index of all tailored resumes
+    all-points/
+      page.tsx                      ← resume
+      cover-letter/page.tsx         ← cover letter
+    okta-conversational-marketing/
+      page.tsx
+      cover-letter/page.tsx
+    unrivaled-sports/
+      page.tsx
+      cover-letter/page.tsx
+  _resume/                          ← shared infra (underscore = not a route)
+    LetterShell.tsx                 ← toolbar + page chrome + print CSS
+    templates/                      ← starter files for new tailored resumes
+```
 
-## Learn More
+## Adding a new tailored resume
 
-To learn more about Next.js, take a look at the following resources:
+Three minutes, end to end.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Pick a template** that matches the visual style you want:
+   - Tech-modern (white, two-column, blue accent) → `app/_resume/templates/resume-tech-modern.tsx.template`
+   - Editorial (cream, single-column, magazine-style) → copy `app/resumes/unrivaled-sports/page.tsx` directly
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Copy and rename** to:
+   ```
+   app/resumes/<role-slug>/page.tsx
+   ```
+   (Drop the `.template` extension.)
 
-## Deploy on Vercel
+3. **Fill in the marked sections** (look for `TODO:` comments). Update the import path if your slug nesting changes.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Add an entry** to the `RESUMES` array in `app/resumes/page.tsx` so it shows in the index.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Adding a matching cover letter
+
+Same pattern, one level deeper:
+
+1. Copy `app/_resume/templates/cover-letter-tech-modern.tsx.template` to:
+   ```
+   app/resumes/<role-slug>/cover-letter/page.tsx
+   ```
+2. Update the `TODO:` sections. Pay attention to the import path — it's `../../../_resume/LetterShell` from inside `cover-letter/`.
+3. The `/resumes` index auto-shows it if you set `hasLetter: true` on the RESUMES entry.
+
+## How the print/PDF mechanism works
+
+Every resume and cover letter renders inside `<LetterShell>`, which provides:
+
+- A sticky dark toolbar with a "Download PDF" button
+- The 8.5×11in letter page constraint
+- `@media print` and `@page` CSS so printing produces a vector-perfect single page
+
+Clicking Download PDF calls `window.print()`. In the browser dialog, choose "Save as PDF" to export. No JS PDF libraries, no rasterization. Fonts and color are preserved.
+
+If your content overflows 11in, the `overflow: hidden` on the page silently clips it. Trim content until everything fits.
+
+## URL redirects
+
+`next.config.ts` includes a redirect from `/marketing` → `/resumes/all-points` (the old All Points URL). Add more redirects there as you reorganize.
+
+## Voice rules (because it matters across these documents)
+
+- No em dashes. Use commas, periods, parentheses, or " — " typed as words.
+- Plain English. No corporate jargon.
+- Don't invent specifics. See `application-brief.md` for what you'll claim vs. avoid.
+
+## Application brief
+
+`application-brief.md` at the project root is the working brief you drop into a fresh AI chat to help draft answers for online applications and interviews. Keep it current as roles change.
