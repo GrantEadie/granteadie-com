@@ -24,11 +24,11 @@ export interface CaseStudy {
 
 function MetaRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-[auto_1fr] sm:grid-cols-[200px_1fr] gap-x-6 gap-y-1 py-3 sm:py-4">
-      <dt className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 pt-0.5 sm:pt-1">
+    <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[200px_1fr] gap-x-4 sm:gap-x-6 gap-y-1 py-3 sm:py-4">
+      <dt className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tracking-[0.2em] sm:tracking-[0.22em] uppercase opacity-60 pt-1">
         ── {label}
       </dt>
-      <dd className="font-[family-name:var(--font-dm-sans)] text-base sm:text-lg">
+      <dd className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-lg break-words">
         {value}
       </dd>
     </div>
@@ -45,8 +45,8 @@ function BodyBlock({
   link?: { label: string; href: string };
 }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-x-8 gap-y-3 py-8 sm:py-12">
-      <dt className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 pt-1">
+    <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-x-8 gap-y-3 py-7 sm:py-12">
+      <dt className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tracking-[0.2em] sm:tracking-[0.22em] uppercase opacity-60 pt-1">
         ── {label}
       </dt>
       <dd className="font-[family-name:var(--font-dm-sans)] text-base sm:text-lg leading-relaxed max-w-prose">
@@ -56,7 +56,7 @@ function BodyBlock({
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-4 text-xs sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all"
+            className="inline-block mt-4 text-[11px] sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all"
           >
             {link.label} →
           </a>
@@ -71,28 +71,28 @@ export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
     <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#2A09F3] text-[#2A09F3] dark:text-[#FFFFFF]">
       <ThemeToggle />
 
-      <main className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <main className="px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
         <div className="max-w-5xl mx-auto">
           {/* header: wordmark + breadcrumb */}
-          <header className="flex items-baseline justify-between gap-4 pb-4 border-b border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
+          <header className="flex items-baseline justify-between gap-4 pb-3 sm:pb-4">
             <Link
               href="/"
-              className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base font-semibold tracking-[0.25em] uppercase hover:opacity-70 transition-opacity"
+              className="font-[family-name:var(--font-dm-sans)] text-[11px] sm:text-base font-semibold tracking-[0.25em] uppercase hover:opacity-70 transition-opacity"
             >
               ← Grant Eadie
             </Link>
-            <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tabular-nums tracking-wider opacity-60">
+            <span className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tabular-nums tracking-wider opacity-60">
               (work / {data.slug})
             </span>
           </header>
 
           {/* title block */}
           <FadeInSection>
-            <div className="py-16 sm:py-24 md:py-32">
-              <h1 className="font-[family-name:var(--font-loram)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6 max-w-4xl">
+            <div className="py-12 sm:py-24 md:py-32">
+              <h1 className="font-[family-name:var(--font-loram)] text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-4 sm:mb-6 max-w-4xl">
                 {data.title}
               </h1>
-              <p className="font-[family-name:var(--font-dm-sans)] text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl opacity-90">
+              <p className="font-[family-name:var(--font-dm-sans)] text-base sm:text-xl md:text-2xl leading-relaxed max-w-2xl opacity-90">
                 {data.subhead}
               </p>
             </div>
@@ -143,17 +143,17 @@ export default function CaseStudyLayout({ data }: { data: CaseStudy }) {
 
           {/* footer */}
           <FadeInSection delay={500}>
-            <footer className="pt-12 mt-12 flex items-baseline justify-between gap-4 flex-wrap">
+            <footer className="pt-10 sm:pt-12 mt-10 sm:mt-12 flex items-baseline justify-between gap-4 flex-wrap">
               <Link
                 href="/#work"
-                className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.25em] uppercase opacity-60 hover:opacity-100 transition-opacity"
+                className="font-[family-name:var(--font-dm-sans)] text-[11px] sm:text-sm tracking-[0.25em] uppercase opacity-60 hover:opacity-100 transition-opacity"
               >
                 ← All Work
               </Link>
               {data.nextProject && (
                 <Link
                   href={`/work/${data.nextProject.slug}`}
-                  className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.25em] uppercase opacity-60 hover:opacity-100 transition-opacity"
+                  className="font-[family-name:var(--font-dm-sans)] text-[11px] sm:text-sm tracking-[0.25em] uppercase opacity-60 hover:opacity-100 transition-opacity"
                 >
                   Next: {data.nextProject.title} →
                 </Link>

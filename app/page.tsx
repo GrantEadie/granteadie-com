@@ -1,6 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import ThemeToggle from "./components/ThemeToggle";
 import FadeInSection from "./components/FadeInSection";
+import GenerativeMark from "./components/viz/GenerativeMark";
+import WaveformDivider from "./components/viz/WaveformDivider";
 
 const HERO_META = [
   { label: "ROLE", value: "Designer + developer" },
@@ -72,7 +75,7 @@ const BACKGROUND = [
 const APPROACH = [
   {
     label: "SITES",
-    body: "New custom builds, or building from someone else's design (your designer, your Figma, or your agency's). For individuals, small businesses, and other agencies who need a build hand.",
+    body: "New custom builds, or building from someone else's design (your Figma, your team's). For individuals, small businesses, and other agencies needing a build hand. Stack-fluent across WordPress, Astro, Next.js, and Drupal.",
   },
   {
     label: "CUSTOM CODE",
@@ -80,7 +83,7 @@ const APPROACH = [
   },
   {
     label: "CARE",
-    body: "Ongoing maintenance and small new features for sites already built (WordPress mostly). Monthly retainer.",
+    body: "Ongoing maintenance and small new features for sites already built. Monthly retainer.",
   },
   {
     label: "PRICING",
@@ -90,13 +93,16 @@ const APPROACH = [
 
 function SectionHeader({ number, label }: { number: string; label: string }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 mb-12 pb-4 border-b border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
-      <h2 className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase">
-        {label}
-      </h2>
-      <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tabular-nums tracking-wider opacity-60">
-        ({number})
-      </span>
+    <div className="mb-12">
+      <div className="flex items-baseline justify-between gap-4 pb-4">
+        <h2 className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase">
+          {label}
+        </h2>
+        <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tabular-nums tracking-wider opacity-60">
+          ({number})
+        </span>
+      </div>
+      <WaveformDivider amplitude={2} />
     </div>
   );
 }
@@ -107,20 +113,21 @@ export default function Home() {
       <ThemeToggle />
 
       {/* 01 — Hero */}
-      <section className="min-h-screen flex flex-col px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="max-w-5xl w-full mx-auto flex-1 flex flex-col">
-          <header className="flex items-baseline justify-between gap-4 pb-4 border-b border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
-            <span className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base font-semibold tracking-[0.25em] uppercase">
+      <section className="min-h-screen flex flex-col px-5 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <div className="max-w-5xl w-full mx-auto sm:flex-1 flex flex-col">
+          <header className="flex items-baseline justify-between gap-4 pb-3 sm:pb-4">
+            <span className="font-[family-name:var(--font-dm-sans)] text-[11px] sm:text-base font-semibold tracking-[0.25em] uppercase">
               Grant Eadie
             </span>
-            <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tabular-nums tracking-wider opacity-60">
+            <span className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tabular-nums tracking-wider opacity-60">
               (01)
             </span>
           </header>
+          <WaveformDivider amplitude={2} />
 
-          <div className="flex-1 flex items-center py-12 sm:py-16">
+          <div className="py-10 sm:flex-1 sm:flex sm:items-center sm:py-16">
             <FadeInSection>
-              <h1 className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-3xl">
+              <h1 className="font-[family-name:var(--font-loram)] text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-3xl">
                 Quietly making bespoke websites and the design and code around them.
               </h1>
             </FadeInSection>
@@ -131,12 +138,12 @@ export default function Home() {
               {HERO_META.map(({ label, value, href }) => (
                 <div
                   key={label}
-                  className="grid grid-cols-[auto_1fr] sm:grid-cols-[200px_1fr] gap-x-6 gap-y-1 py-3 sm:py-4"
+                  className="grid grid-cols-[90px_1fr] sm:grid-cols-[200px_1fr] gap-x-4 sm:gap-x-6 gap-y-1 py-3 sm:py-4"
                 >
-                  <dt className="text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 pt-0.5 sm:pt-1">
+                  <dt className="text-[10px] sm:text-sm tracking-[0.2em] sm:tracking-[0.22em] uppercase opacity-60 pt-1">
                     ── {label}
                   </dt>
-                  <dd className="text-base sm:text-lg">
+                  <dd className="text-sm sm:text-lg break-words">
                     {href ? (
                       <a
                         href={href}
@@ -151,10 +158,13 @@ export default function Home() {
                 </div>
               ))}
             </dl>
-            <div className="mt-8 pt-4 border-t border-[#2A09F3]/30 dark:border-[#FFFFFF]/30 flex justify-end">
+            <div className="mt-6 sm:mt-8 flex justify-end">
+              <GenerativeMark />
+            </div>
+            <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-[#2A09F3]/30 dark:border-[#FFFFFF]/30 flex justify-end">
               <a
                 href="#work"
-                className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.25em] uppercase opacity-60 hover:opacity-100 transition-opacity"
+                className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-xs tracking-[0.25em] uppercase opacity-60 hover:opacity-100 transition-opacity"
               >
                 Scroll ↓
               </a>
@@ -166,7 +176,7 @@ export default function Home() {
       {/* 02 — Selected work */}
       <section
         id="work"
-        className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15"
+        className="px-5 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15"
       >
         <div className="max-w-5xl mx-auto">
           <FadeInSection>
@@ -182,8 +192,8 @@ export default function Home() {
           <ul className="divide-y divide-[#2A09F3]/15 dark:divide-[#FFFFFF]/15 mb-16">
             {PROJECTS.map((item, i) => (
               <FadeInSection key={item.title} delay={i * 100}>
-                <li className="grid grid-cols-1 sm:grid-cols-[160px_1fr_auto] gap-x-8 gap-y-3 py-8 sm:py-10 items-start">
-                  <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase tabular-nums opacity-60 pt-1">
+                <li className="grid grid-cols-[90px_1fr] sm:grid-cols-[160px_1fr_auto] gap-x-4 sm:gap-x-8 gap-y-3 py-7 sm:py-10 items-start">
+                  <span className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tracking-[0.18em] uppercase tabular-nums opacity-60 pt-1.5 sm:pt-1">
                     {item.year}
                   </span>
                   <div>
@@ -199,7 +209,7 @@ export default function Home() {
                   </div>
                   <Link
                     href={item.href}
-                    className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all whitespace-nowrap sm:pt-1"
+                    className="col-span-2 sm:col-auto font-[family-name:var(--font-dm-sans)] text-[11px] sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all whitespace-nowrap mt-1 sm:mt-0 sm:pt-1"
                   >
                     {item.linkLabel} →
                   </Link>
@@ -217,8 +227,8 @@ export default function Home() {
           <ul className="divide-y divide-[#2A09F3]/15 dark:divide-[#FFFFFF]/15">
             {BACKGROUND.map((item, i) => (
               <FadeInSection key={item.title} delay={i * 100}>
-                <li className="grid grid-cols-1 sm:grid-cols-[160px_1fr_auto] gap-x-8 gap-y-3 py-8 sm:py-10 items-start">
-                  <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase tabular-nums opacity-60 pt-1">
+                <li className="grid grid-cols-[90px_1fr] sm:grid-cols-[160px_1fr_auto] gap-x-4 sm:gap-x-8 gap-y-3 py-7 sm:py-10 items-start">
+                  <span className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tracking-[0.18em] uppercase tabular-nums opacity-60 pt-1.5 sm:pt-1">
                     {item.year}
                   </span>
                   <div>
@@ -236,7 +246,7 @@ export default function Home() {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all whitespace-nowrap sm:pt-1"
+                    className="col-span-2 sm:col-auto font-[family-name:var(--font-dm-sans)] text-[11px] sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all whitespace-nowrap mt-1 sm:mt-0 sm:pt-1"
                   >
                     {item.linkLabel} →
                   </a>
@@ -259,7 +269,7 @@ export default function Home() {
       </section>
 
       {/* 03 — Approach */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15">
+      <section className="px-5 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15">
         <div className="max-w-5xl mx-auto">
           <FadeInSection>
             <SectionHeader number="03" label="Approach" />
@@ -283,23 +293,54 @@ export default function Home() {
       </section>
 
       {/* 04 — Contact */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15">
+      <section className="px-5 sm:px-6 lg:px-8 py-16 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15">
         <div className="max-w-5xl mx-auto">
           <FadeInSection>
             <SectionHeader number="04" label="Contact" />
           </FadeInSection>
 
           <FadeInSection delay={200}>
-            <div className="py-8 sm:py-12">
-              <p className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 mb-3">
-                ── EMAIL
-              </p>
-              <a
-                href="mailto:me@granteadie.com"
-                className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight underline underline-offset-[0.15em] decoration-2 hover:decoration-[3px] transition-all break-all sm:break-normal"
-              >
-                me@granteadie.com
-              </a>
+            <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-8 sm:gap-16 items-start py-6 sm:py-12">
+              {/* Portrait */}
+              <div>
+                <p className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tracking-[0.22em] uppercase opacity-60 mb-3 sm:mb-4">
+                  ── Portrait
+                </p>
+                <Image
+                  src="/grant-headshot.jpg"
+                  alt="Grant Eadie"
+                  width={200}
+                  height={200}
+                  className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 object-cover"
+                  priority
+                />
+                <p className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-xs tracking-[0.22em] uppercase opacity-60 mt-3">
+                  Grant Eadie / 2026
+                </p>
+              </div>
+
+              {/* Email + Hours */}
+              <div className="space-y-6 sm:space-y-10">
+                <div>
+                  <p className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tracking-[0.22em] uppercase opacity-60 mb-2 sm:mb-3">
+                    ── Email
+                  </p>
+                  <a
+                    href="mailto:me@granteadie.com"
+                    className="font-[family-name:var(--font-loram)] text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl leading-tight underline underline-offset-[0.15em] decoration-2 hover:decoration-[3px] transition-all break-words"
+                  >
+                    me@granteadie.com
+                  </a>
+                </div>
+                <div>
+                  <p className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-sm tracking-[0.22em] uppercase opacity-60 mb-2">
+                    ── Replies
+                  </p>
+                  <p className="font-[family-name:var(--font-dm-sans)] text-base sm:text-lg">
+                    Usually within a day or two.
+                  </p>
+                </div>
+              </div>
             </div>
           </FadeInSection>
 
