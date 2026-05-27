@@ -14,8 +14,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Grant Eadie - Resume",
-  description: "Grant Eadie's resume",
+  title: "Grant Eadie",
+  description: "Independent designer and developer. Bespoke websites and the design and code around them.",
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
