@@ -13,7 +13,28 @@ const HERO_META = [
   },
 ];
 
-const WORK = [
+const PROJECTS = [
+  {
+    year: "2024",
+    title: "AFFCNY",
+    role: "Web design + custom dev, with Rare Dimension",
+    note: "Rebuilt a 50-year-old foster, adoptive, and kinship family nonprofit's site on Bricks Builder. From 50+ plugins to 6. Load times 4.5s to 0.2s.",
+    href: "/work/affcny",
+    linkLabel: "case study",
+    internal: true,
+  },
+  {
+    year: "2022",
+    title: "TwispWorks Foundation",
+    role: "Brand + web, with Rare Dimension",
+    note: "Brand system and custom WordPress build for a Methow Valley nonprofit campus. Hand-drawn interactive map driven by the CMS.",
+    href: "/work/twispworks",
+    linkLabel: "case study",
+    internal: true,
+  },
+];
+
+const BACKGROUND = [
   {
     year: "2019–NOW",
     title: "Rare Dimension",
@@ -50,16 +71,20 @@ const WORK = [
 
 const APPROACH = [
   {
-    label: "PROCESS",
-    body: "We talk through what you actually need, then I make it. No phases or rituals that don't pull their weight.",
+    label: "SITES",
+    body: "New custom builds, or building from someone else's design (your designer, your Figma, or your agency's). For individuals, small businesses, and other agencies who need a build hand.",
   },
   {
-    label: "STACK",
-    body: "WordPress for content-heavy work. Astro for smaller brochure sites. Bespoke code where the platform stops being useful.",
+    label: "CUSTOM CODE",
+    body: "Plugins, integrations, automations, small bespoke things on existing sites.",
   },
   {
-    label: "FIT",
-    body: "Individuals and small businesses who'd rather work with a person than an agency. Smaller scope than my agency Rare Dimension, broader range.",
+    label: "CARE",
+    body: "Ongoing maintenance and small new features for sites already built (WordPress mostly). Monthly retainer.",
+  },
+  {
+    label: "PRICING",
+    body: "Most projects land $1.5k–$8k. Hard cap $10k; anything bigger is Rare Dimension territory.",
   },
 ];
 
@@ -148,8 +173,49 @@ export default function Home() {
             <SectionHeader number="02" label="Selected Work" />
           </FadeInSection>
 
+          <FadeInSection>
+            <h3 className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 mb-2">
+              ── Projects
+            </h3>
+          </FadeInSection>
+
+          <ul className="divide-y divide-[#2A09F3]/15 dark:divide-[#FFFFFF]/15 mb-16">
+            {PROJECTS.map((item, i) => (
+              <FadeInSection key={item.title} delay={i * 100}>
+                <li className="grid grid-cols-1 sm:grid-cols-[160px_1fr_auto] gap-x-8 gap-y-3 py-8 sm:py-10 items-start">
+                  <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase tabular-nums opacity-60 pt-1">
+                    {item.year}
+                  </span>
+                  <div>
+                    <h3 className="font-[family-name:var(--font-loram)] text-2xl sm:text-3xl leading-tight mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="font-[family-name:var(--font-dm-sans)] italic text-sm sm:text-base opacity-70 mb-2">
+                      {item.role}
+                    </p>
+                    <p className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base max-w-prose leading-relaxed">
+                      {item.note}
+                    </p>
+                  </div>
+                  <Link
+                    href={item.href}
+                    className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all whitespace-nowrap sm:pt-1"
+                  >
+                    {item.linkLabel} →
+                  </Link>
+                </li>
+              </FadeInSection>
+            ))}
+          </ul>
+
+          <FadeInSection>
+            <h3 className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 mb-2">
+              ── Background
+            </h3>
+          </FadeInSection>
+
           <ul className="divide-y divide-[#2A09F3]/15 dark:divide-[#FFFFFF]/15">
-            {WORK.map((item, i) => (
+            {BACKGROUND.map((item, i) => (
               <FadeInSection key={item.title} delay={i * 100}>
                 <li className="grid grid-cols-1 sm:grid-cols-[160px_1fr_auto] gap-x-8 gap-y-3 py-8 sm:py-10 items-start">
                   <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase tabular-nums opacity-60 pt-1">
