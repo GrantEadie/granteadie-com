@@ -1,472 +1,253 @@
-import Image from "next/image";
+import Link from "next/link";
 import ThemeToggle from "./components/ThemeToggle";
 import FadeInSection from "./components/FadeInSection";
-import AnimatedHeroHeading from "./components/AnimatedHeroHeading";
-import AnimatedHeading from "./components/AnimatedHeading";
-import AnimatedDecorativeShape from "./components/AnimatedDecorativeShape";
+
+const HERO_META = [
+  { label: "ROLE", value: "Designer + developer" },
+  { label: "BASED", value: "Pacific Northwest" },
+  { label: "STATUS", value: "Open for small projects" },
+  {
+    label: "EMAIL",
+    value: "me@granteadie.com",
+    href: "mailto:me@granteadie.com",
+  },
+];
+
+const WORK = [
+  {
+    year: "2019–NOW",
+    title: "Rare Dimension",
+    role: "Co-founder, designer + developer",
+    note: "Independent web agency with my partner Matt. Nonprofits, municipalities, small institutions.",
+    href: "https://raredimension.com/work/",
+    linkLabel: "see work",
+  },
+  {
+    year: "2022–2024",
+    title: "Workona",
+    role: "Software engineer",
+    note: "Helped ship a Chrome extension that scaled past 500,000 users. Up close with a growth-stage product team.",
+    href: "https://workona.com/",
+    linkLabel: "check it out",
+  },
+  {
+    year: "2019–2022",
+    title: "Smiling Woods Yurts",
+    role: "Dev, design, communications",
+    note: "Custom internal tools, public site rebuild, full brand refresh.",
+    href: "https://smilingwoodsyurts.com/",
+    linkLabel: "in the wild",
+  },
+  {
+    year: "2014–2019",
+    title: "Touring Musician",
+    role: "Solo records and side projects",
+    note: "A few albums, time on the road.",
+    href: "https://open.spotify.com/artist/41JNAYVuPs7zwJbQBQ6tec",
+    linkLabel: "give it a listen",
+  },
+];
+
+const APPROACH = [
+  {
+    label: "PROCESS",
+    body: "We talk through what you actually need, then I make it. No phases or rituals that don't pull their weight.",
+  },
+  {
+    label: "STACK",
+    body: "WordPress for content-heavy work. Astro for smaller brochure sites. Bespoke code where the platform stops being useful.",
+  },
+  {
+    label: "FIT",
+    body: "Individuals and small businesses who'd rather work with a person than an agency. Smaller scope than my agency Rare Dimension, broader range.",
+  },
+];
+
+function SectionHeader({ number, label }: { number: string; label: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 mb-12 pb-4 border-b border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
+      <h2 className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase">
+        {label}
+      </h2>
+      <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tabular-nums tracking-wider opacity-60">
+        ({number})
+      </span>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#2A09F3]">
+    <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#2A09F3] text-[#2A09F3] dark:text-[#FFFFFF]">
       <ThemeToggle />
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
-        {/* Decorative Shape */}
-        <AnimatedDecorativeShape />
+      {/* 01 — Hero */}
+      <section className="min-h-screen flex flex-col px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div className="max-w-5xl w-full mx-auto flex-1 flex flex-col">
+          <header className="flex items-baseline justify-between gap-4 pb-4 border-b border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
+            <span className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base font-semibold tracking-[0.25em] uppercase">
+              Grant Eadie
+            </span>
+            <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tabular-nums tracking-wider opacity-60">
+              (01)
+            </span>
+          </header>
 
-        <div className="max-w-5xl w-full mx-auto relative z-10">
-          <FadeInSection>
-            <div className="space-y-6 sm:space-y-8">
-              <div className="space-y-3 sm:space-y-4">
-                <AnimatedHeroHeading />
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-xl md:text-2xl lg:text-4xl font-bold [-webkit-text-stroke:1px_#2A09F3] dark:[-webkit-text-stroke:1px_#FFFFFF] [-webkit-text-fill-color:transparent] tracking-wide"
+          <div className="flex-1 flex items-center py-12 sm:py-16">
+            <FadeInSection>
+              <h1 className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight max-w-3xl">
+                Quietly making bespoke websites and the design and code around them.
+              </h1>
+            </FadeInSection>
+          </div>
+
+          <FadeInSection delay={300}>
+            <dl className="font-[family-name:var(--font-dm-sans)] divide-y divide-[#2A09F3]/15 dark:divide-[#FFFFFF]/15">
+              {HERO_META.map(({ label, value, href }) => (
+                <div
+                  key={label}
+                  className="grid grid-cols-[auto_1fr] sm:grid-cols-[200px_1fr] gap-x-6 gap-y-1 py-3 sm:py-4"
                 >
-                  Designer · Developer · Etc
-                </AnimatedHeading>
-              </div>
-
-              <div className="h-px w-16 sm:w-24 bg-[#2A09F3] dark:bg-[#FFFFFF]"></div>
-
-              <div className="max-w-2xl">
-                <p className="font-[family-name:var(--font-dm-sans)] text-lg sm:text-xl md:text-2xl text-[#2A09F3]/90 dark:text-[#FFFFFF]/90 leading-relaxed">
-                  Hi, I&apos;m Grant, a developer and designer pulled toward
-                  work that weaves technology into the fabric of community. I
-                  build tools that help organizations articulate their purpose,
-                  and I&apos;m guided by a conviction that we can cultivate a
-                  deeper harmony between human life and the living world we
-                  inhabit.
-                </p>
-                <a
-                  href="/portfolio"
-                  className="font-[family-name:var(--font-dm-sans)] inline-flex items-center gap-1.5 mt-6 text-base sm:text-lg font-semibold text-[#2A09F3] dark:text-[#FFFFFF] underline underline-offset-4 decoration-1 hover:underline-offset-8 hover:decoration-2 transition-all duration-300 group"
-                >
-                  see portfolio
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                  >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
+                  <dt className="text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 pt-0.5 sm:pt-1">
+                    ── {label}
+                  </dt>
+                  <dd className="text-base sm:text-lg">
+                    {href ? (
+                      <a
+                        href={href}
+                        className="underline underline-offset-4 decoration-1 hover:decoration-2 transition-all"
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <div className="mt-8 pt-4 border-t border-[#2A09F3]/30 dark:border-[#FFFFFF]/30 flex justify-end">
+              <a
+                href="#work"
+                className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.25em] uppercase opacity-60 hover:opacity-100 transition-opacity"
+              >
+                Scroll ↓
+              </a>
             </div>
           </FadeInSection>
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="min-h-screen px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#f7f7f7] dark:bg-[#2007CF]">
+      {/* 02 — Selected work */}
+      <section
+        id="work"
+        className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15"
+      >
         <div className="max-w-5xl mx-auto">
           <FadeInSection>
-            <AnimatedHeading
-              as="h2"
-              className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-8 sm:mb-12 md:mb-16"
-            >
-              Work
-            </AnimatedHeading>
+            <SectionHeader number="02" label="Selected Work" />
           </FadeInSection>
 
-          <div className="space-y-8 sm:space-y-10 md:space-y-12">
-            {/* Timeline Item 1 */}
-            <FadeInSection delay={300}>
-              <div className="relative pl-6 sm:pl-8 border-l-2 border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2A09F3] dark:bg-[#FFFFFF]"></div>
-                <div className="bg-white/60 dark:bg-white/10 backdrop-blur-xs border border-white/70 dark:border-white/20 shadow-sm rounded-lg py-4 px-4 sm:px-5">
-                  <div className="mb-1 sm:mb-2 flex items-center gap-2">
-                    <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold text-[#2A09F3]/70 dark:text-[#FFFFFF]/70">
-                      2019 - Present
-                    </span>
-                    <span className="font-[family-name:var(--font-dm-sans)] text-[10px] font-semibold tracking-wide uppercase px-1.5 py-0.5 rounded bg-[#2A09F3]/15 dark:bg-[#FFFFFF]/15 text-[#2A09F3] dark:text-[#FFFFFF]">
-                      Now
-                    </span>
+          <ul className="divide-y divide-[#2A09F3]/15 dark:divide-[#FFFFFF]/15">
+            {WORK.map((item, i) => (
+              <FadeInSection key={item.title} delay={i * 100}>
+                <li className="grid grid-cols-1 sm:grid-cols-[160px_1fr_auto] gap-x-8 gap-y-3 py-8 sm:py-10 items-start">
+                  <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase tabular-nums opacity-60 pt-1">
+                    {item.year}
+                  </span>
+                  <div>
+                    <h3 className="font-[family-name:var(--font-loram)] text-2xl sm:text-3xl leading-tight mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="font-[family-name:var(--font-dm-sans)] italic text-sm sm:text-base opacity-70 mb-2">
+                      {item.role}
+                    </p>
+                    <p className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base max-w-prose leading-relaxed">
+                      {item.note}
+                    </p>
                   </div>
-                  <AnimatedHeading
-                    as="h3"
-                    className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-1 sm:mb-2 leading-tight"
-                  >
-                    Rare Dimension
-                  </AnimatedHeading>
-                  <p className="font-[family-name:var(--font-dm-sans)] italic text-sm sm:text-base text-[#2A09F3]/80 dark:text-[#FFFFFF]/80 mb-3">
-                    Co-founder, Designer &amp; Developer
-                  </p>
-                  <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] leading-relaxed list-disc space-y-1.5 marker:text-[8px] marker:text-[#2A09F3]/50 dark:marker:text-[#FFFFFF]/50">
-                    <li>
-                      Develop production-ready sites using WordPress, Drupal,
-                      React, Astro, and Next.js, selecting the right tool for
-                      each client&apos;s content needs, technical capacity, and
-                      budget
-                    </li>
-                    <li>
-                      Build bespoke plugins and modules for content management,
-                      including custom post types, admin interfaces, and
-                      editorial workflows tailored to non-technical staff
-                    </li>
-                    <li>
-                      Implement donation systems and fundraising integrations,
-                      including Stripe, Give WP, and third-party CRM/payment
-                      platforms
-                    </li>
-                    <li>
-                      Create interactive features such as filterable
-                      directories, event calendars, dynamic forms, and data
-                      visualizations that improve user engagement and
-                      organizational effectiveness
-                    </li>
-                    <li>
-                      Collaborate directly with clients throughout the project,
-                      translating organizational goals into technical
-                      requirements and delivering solutions that staff can
-                      actually maintain
-                    </li>
-                  </ul>
                   <a
-                    href="https://raredimension.com/work/"
+                    href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-[family-name:var(--font-dm-sans)] inline-flex items-center gap-1.5 mt-3 text-sm sm:text-base font-semibold text-[#2A09F3] dark:text-[#FFFFFF] underline underline-offset-4 decoration-1 hover:underline-offset-8 hover:decoration-2 transition-all duration-300 group"
+                    className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all whitespace-nowrap sm:pt-1"
                   >
-                    see some projects
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                    >
-                      <path d="M7 17L17 7" />
-                      <path d="M7 7h10v10" />
-                    </svg>
+                    {item.linkLabel} →
                   </a>
-                </div>
-              </div>
-            </FadeInSection>
-            {/* Timeline Item 2 */}
-            <FadeInSection delay={100}>
-              <div className="relative pl-6 sm:pl-8 border-l-2 border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2A09F3] dark:bg-[#FFFFFF]"></div>
-                <div className="mb-1 sm:mb-2">
-                  <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold text-[#2A09F3]/70 dark:text-[#FFFFFF]/70">
-                    2022 - 2024
-                  </span>
-                </div>
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-1 sm:mb-2 leading-tight"
-                >
-                  Workona
-                </AnimatedHeading>
-                <p className="font-[family-name:var(--font-dm-sans)] italic text-sm sm:text-base text-[#2A09F3]/80 dark:text-[#FFFFFF]/80 mb-3">
-                  Software Engineer
-                </p>
-                <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] leading-relaxed list-disc space-y-1.5 marker:text-[8px] marker:text-[#2A09F3]/50 dark:marker:text-[#FFFFFF]/50">
-                  <li>
-                    Engineered and helped market a Chrome extension that scaled
-                    to 500,000+ users.
-                  </li>
-                  <li>
-                    Shipped product features, ran growth experiments, and managed
-                    backlog alongside the core team.
-                  </li>
-                  <li>
-                    Direct visibility into the dev-tool product world; saw
-                    close-up what moves a real growth-stage product.
-                  </li>
-                </ul>
-                <a
-                  href="https://workona.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-dm-sans)] inline-flex items-center gap-1.5 mt-3 text-sm sm:text-base font-semibold text-[#2A09F3] dark:text-[#FFFFFF] underline underline-offset-4 decoration-1 hover:underline-offset-8 hover:decoration-2 transition-all duration-300 group"
-                >
-                  check it out
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                  >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </FadeInSection>
+                </li>
+              </FadeInSection>
+            ))}
+          </ul>
 
-            {/* Timeline Item 3 */}
-            <FadeInSection delay={200}>
-              <div className="relative pl-6 sm:pl-8 border-l-2 border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2A09F3] dark:bg-[#FFFFFF]"></div>
-                <div className="mb-1 sm:mb-2">
-                  <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold text-[#2A09F3]/70 dark:text-[#FFFFFF]/70">
-                    2019 — 2022
-                  </span>
-                </div>
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-1 sm:mb-2 leading-tight"
-                >
-                  Smiling Woods Yurts - Manufacturer
-                </AnimatedHeading>
-                <p className="font-[family-name:var(--font-dm-sans)] italic text-sm sm:text-base text-[#2A09F3]/80 dark:text-[#FFFFFF]/80 mb-3">
-                   Development/Design/Communications
-                </p>
-                <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] leading-relaxed list-disc space-y-1.5 marker:text-[8px] marker:text-[#2A09F3]/50 dark:marker:text-[#FFFFFF]/50">
-                  <li>
-                    Designed and built a custom enterprise system for customer
-                    pipeline and project management.
-                  </li>
-                  <li>
-                    Rebuilt company website with staff-editable functionality
-                    for pricing, photography, and customer outreach.
-                  </li>
-                  <li>
-                    Developed complete brand refresh including logo and visual
-                    identity system.
-                  </li>
-                </ul>
-                <a
-                  href="https://smilingwoodsyurts.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-dm-sans)] inline-flex items-center gap-1.5 mt-3 text-sm sm:text-base font-semibold text-[#2A09F3] dark:text-[#FFFFFF] underline underline-offset-4 decoration-1 hover:underline-offset-8 hover:decoration-2 transition-all duration-300 group"
-                >
-                  see it in the wild
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                  >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </FadeInSection>
-
-            {/* Timeline Item 4 */}
-            <FadeInSection delay={400}>
-              <div className="relative pl-6 sm:pl-8 border-l-2 border-[#2A09F3]/30 dark:border-[#FFFFFF]/30">
-                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#2A09F3] dark:bg-[#FFFFFF]"></div>
-                <div className="mb-1 sm:mb-2">
-                  <span className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm font-semibold text-[#2A09F3]/70 dark:text-[#FFFFFF]/70">
-                    2014 — 2019
-                  </span>
-                </div>
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-1 sm:mb-2 leading-tight"
-                >
-                  Full Time Touring Musician
-                </AnimatedHeading>
-                <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] leading-relaxed list-disc space-y-1.5 marker:text-[8px] marker:text-[#2A09F3]/50 dark:marker:text-[#FFFFFF]/50">
-                  <li>
-                    Wrote some solo albums, worked with lots of other musicians.
-                  </li>
-                  <li>
-                    Traveled the world playing music for people who liked it.
-                  </li>
-                </ul>
-                <a
-                  href="#"
-                  target="https://open.spotify.com/artist/41JNAYVuPs7zwJbQBQ6tec"
-                  rel="noopener noreferrer"
-                  className="font-[family-name:var(--font-dm-sans)] inline-flex items-center gap-1.5 mt-3 text-sm sm:text-base font-semibold text-[#2A09F3] dark:text-[#FFFFFF] underline underline-offset-4 decoration-1 hover:underline-offset-8 hover:decoration-2 transition-all duration-300 group"
-                >
-                  give it a listen
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                  >
-                    <path d="M7 17L17 7" />
-                    <path d="M7 7h10v10" />
-                  </svg>
-                </a>
-              </div>
-            </FadeInSection>
-          </div>
+          <FadeInSection delay={400}>
+            <div className="pt-8 mt-4 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15">
+              <Link
+                href="/portfolio"
+                className="font-[family-name:var(--font-dm-sans)] text-sm tracking-[0.18em] uppercase underline underline-offset-4 decoration-1 hover:decoration-2 transition-all"
+              >
+                See the full portfolio →
+              </Link>
+            </div>
+          </FadeInSection>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#FFFFFF] dark:bg-[#2A09F3]">
+      {/* 03 — Approach */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15">
         <div className="max-w-5xl mx-auto">
           <FadeInSection>
-            <AnimatedHeading
-              as="h2"
-              className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-8 sm:mb-12 md:mb-16"
-            >
-              Skills
-            </AnimatedHeading>
+            <SectionHeader number="03" label="Approach" />
           </FadeInSection>
 
-          <FadeInSection delay={100}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
-              {/* Technology Column */}
-              <div>
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-4"
-                >
-                  Technology
-                </AnimatedHeading>
-                <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] space-y-2">
-                  <li>JavaScript / TypeScript</li>
-                  <li>PHP / WordPress / Drupal</li>
-                  <li>Version Control / Git</li>
-                  <li>React / Next.js</li>
-                  <li>HTML / CSS</li>
-                  <li>Node.js</li>
-                  <li>SQL</li>
-                </ul>
-              </div>
-
-              {/* Design Column */}
-              <div>
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-4"
-                >
-                  Design
-                </AnimatedHeading>
-                <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] space-y-2">
-                  <li>Adobe Photoshop</li>
-                  <li>Adobe Illustrator</li>
-                  <li>Adobe InDesign</li>
-                  <li>Figma</li>
-                </ul>
-              </div>
-
-              {/* Systems Skills Column */}
-              <div>
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-4"
-                >
-                  Systems
-                </AnimatedHeading>
-                <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] space-y-2">
-                  <li>SEO Optimization</li>
-                  <li>Google Analytics</li>
-                  <li>Brand Development</li>
-                  <li>Content Strategy</li>
-                  <li>
-                    Copy Editing{" "}
-                    <i className="text-xs italic">
-                      (if it&apos;s something I care about)
-                    </i>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Soft Skills Column */}
-              <div>
-                <AnimatedHeading
-                  as="h3"
-                  className="font-[family-name:var(--font-loram)] text-xl sm:text-2xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-4"
-                >
-                  Soft
-                </AnimatedHeading>
-                <ul className="font-[family-name:var(--font-dm-sans)] text-sm sm:text-base text-[#2A09F3] dark:text-[#FFFFFF] space-y-2">
-                  <li>Me Talk Good Sometimes</li>
-                  <li>Also Listen Well</li>
-                  <li>My Team is My Life</li>
-                  <li>I've been said to take exceptional meeting notes</li>
-                </ul>
-              </div>
-            </div>
-          </FadeInSection>
+          <dl className="divide-y divide-[#2A09F3]/15 dark:divide-[#FFFFFF]/15">
+            {APPROACH.map((item, i) => (
+              <FadeInSection key={item.label} delay={i * 100}>
+                <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-x-8 gap-y-3 py-8 sm:py-10">
+                  <dt className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 pt-1">
+                    ── {item.label}
+                  </dt>
+                  <dd className="font-[family-name:var(--font-dm-sans)] text-base sm:text-lg leading-relaxed max-w-prose">
+                    {item.body}
+                  </dd>
+                </div>
+              </FadeInSection>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* Education Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#f7f7f7] dark:bg-[#2007CF]">
-        <FadeInSection>
-          <div className="max-w-5xl mx-auto flex items-center justify-center gap-4">
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-8 h-8 sm:w-10 sm:h-10 text-[#2A09F3] dark:text-[#FFFFFF]"
-            >
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c3 3 9 3 12 0v-5" />
-            </svg>
-            <div className="font-[family-name:var(--font-dm-sans)] text-base sm:text-lg text-[#2A09F3] dark:text-[#FFFFFF]">
-              <span className="font-semibold">
-                Computer Science & Violin/Viola Performance
-              </span>{" "}
-              — Western Washington University{" "}
-              <i className="text-xs">2011 - 2015</i>
-            </div>
-          </div>
-        </FadeInSection>
-      </section>
+      {/* 04 — Contact */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 sm:py-24 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15">
+        <div className="max-w-5xl mx-auto">
+          <FadeInSection>
+            <SectionHeader number="04" label="Contact" />
+          </FadeInSection>
 
-      {/* Contact Section */}
-      <section className="min-h-[60vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 bg-[#FFFFFF] dark:bg-[#2A09F3]">
-        <FadeInSection>
-          <div className="max-w-5xl w-full flex flex-col sm:flex-row items-center gap-8 sm:gap-12">
-            <Image
-              src="/grant-headshot.jpg"
-              alt="Grant Eadie"
-              width={160}
-              height={160}
-              className="rounded-full object-cover w-32 h-32 sm:w-40 sm:h-40 shrink-0"
-            />
-            <div>
-              <AnimatedHeading
-                as="h2"
-                className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl font-bold text-[#2A09F3] dark:text-[#FFFFFF] mb-4 sm:mb-6"
-              >
-                Get In Touch
-              </AnimatedHeading>
+          <FadeInSection delay={200}>
+            <div className="py-8 sm:py-12">
+              <p className="font-[family-name:var(--font-dm-sans)] text-xs sm:text-sm tracking-[0.22em] uppercase opacity-60 mb-3">
+                ── EMAIL
+              </p>
               <a
                 href="mailto:me@granteadie.com"
-                className="font-[family-name:var(--font-dm-sans)] inline-block text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#2A09F3] dark:text-[#FFFFFF] hover:text-[#2A09F3]/70 dark:hover:text-[#FFFFFF]/70 transition-colors underline decoration-2 underline-offset-4 break-all sm:break-normal"
+                className="font-[family-name:var(--font-loram)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight underline underline-offset-[0.15em] decoration-2 hover:decoration-[3px] transition-all break-all sm:break-normal"
               >
                 me@granteadie.com
               </a>
             </div>
-          </div>
-        </FadeInSection>
+          </FadeInSection>
+
+          <FadeInSection delay={400}>
+            <footer className="pt-8 mt-12 border-t border-[#2A09F3]/15 dark:border-[#FFFFFF]/15 flex items-center justify-between gap-4 flex-wrap">
+              <span className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.25em] uppercase opacity-60">
+                © 2026 Grant Eadie
+              </span>
+              <span className="font-[family-name:var(--font-dm-sans)] text-xs tracking-[0.25em] uppercase opacity-60">
+                Bellingham, WA
+              </span>
+            </footer>
+          </FadeInSection>
+        </div>
       </section>
     </div>
   );
