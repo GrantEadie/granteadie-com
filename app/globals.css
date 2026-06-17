@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Converts black SVG shapes to the brand blue (#2A09F3) in light mode, white in dark mode */
+.shape-icon {
+  filter: invert(17%) sepia(97%) saturate(6914%) hue-rotate(246deg) brightness(87%) contrast(98%);
+}
+.dark .shape-icon {
+  filter: invert(100%);
+}

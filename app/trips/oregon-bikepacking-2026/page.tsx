@@ -497,6 +497,15 @@ export default function OregonBikepackingPage() {
       <header className="px-5 sm:px-8 lg:px-12 pt-14 sm:pt-20 pb-12 sm:pb-20 border-b border-[#2A09F3]/15 dark:border-white/15">
         <div className="max-w-5xl mx-auto">
           <FadeInSection>
+            <img
+              src="/shapes/shape-15.svg"
+              alt=""
+              width={64}
+              height={64}
+              className="shape-icon mb-6 sm:mb-8"
+            />
+          </FadeInSection>
+          <FadeInSection>
             <p className="font-[family-name:var(--font-dm-sans)] text-[10px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-[#2A09F3]/60 dark:text-white/60 mb-4 sm:mb-6">
               ── Western Oregon + Beyond &nbsp;&middot;&nbsp; Gravel Bikepacking &nbsp;&middot;&nbsp; September – October 2026
             </p>
