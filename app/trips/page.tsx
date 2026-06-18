@@ -160,6 +160,41 @@ export default function TripsPage() {
           ))}
         </main>
 
+        {/* ── Gear ── */}
+        <section>
+          <div className="px-5 sm:px-8 lg:px-12 py-8 sm:py-10 border-b border-[#2A09F3]/15 dark:border-white/15">
+            <div className="max-w-5xl mx-auto">
+              <FadeInSection>
+                <p className="font-[family-name:var(--font-dm-sans)] text-[10px] font-semibold tracking-[0.22em] uppercase text-[#2A09F3]/35 dark:text-white/35 mb-5">
+                  ── Gear guides
+                </p>
+              </FadeInSection>
+            </div>
+          </div>
+          <Link
+            href="/trips/bikepacking-gear"
+            className="group block px-5 sm:px-8 lg:px-12 py-10 sm:py-14 border-b border-[#2A09F3]/15 dark:border-white/15 no-underline transition-colors duration-150 hover:bg-[#2A09F3]/[0.03] dark:hover:bg-white/[0.03]"
+          >
+            <div className="max-w-5xl mx-auto">
+              <FadeInSection>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+                  <div>
+                    <h2 className="font-[family-name:var(--font-loram)] text-[1.75rem] sm:text-3xl md:text-4xl leading-[1.0] tracking-tight mb-1 group-hover:opacity-80 transition-opacity">
+                      Bikepacking Bags
+                    </h2>
+                    <p className="font-[family-name:var(--font-dm-sans)] text-sm text-[#2A09F3]/55 dark:text-white/55">
+                      Four-bag system, three builds under $500 — Primos Super Dame, 5-day trip
+                    </p>
+                  </div>
+                  <span className="font-[family-name:var(--font-dm-sans)] text-[9.5px] font-semibold tracking-[0.2em] uppercase px-4 py-2.5 border border-[#2A09F3]/35 dark:border-white/30 text-[#2A09F3] dark:text-white group-hover:border-[#2A09F3]/70 dark:group-hover:border-white/70 transition-colors self-start sm:self-auto flex-shrink-0">
+                    See gear guide →
+                  </span>
+                </div>
+              </FadeInSection>
+            </div>
+          </Link>
+        </section>
+
         {/* ── Footer ── */}
         <footer className="px-5 sm:px-8 lg:px-12 py-10 sm:py-14">
           <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
